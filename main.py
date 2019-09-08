@@ -1,7 +1,7 @@
+#!/usr/bin/python
+#-*- coding:UTF-8 -*-
 import sys
 import math
-
-# Send your busters out into the fog to trap ghosts and bring them home!
 
 # la cantidad de cazadores que controlas
 busters_per_player = int(input())
@@ -20,6 +20,27 @@ fantasmas_atrapados = []
 
 # cazadores por equipo
 cazadores = [{},{}]
+
+# clase que genera una posición (x,y)
+class Posicion:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+# bases de cada equipo según su ID
+bases = [Posicion(0,0),Posicion(16000,9000)]
+
+# función para mover al cazador
+def Mover(x,y):
+    return "MOVE %s %s" % (x,y)
+
+# funcion para cazar un fantasma
+def Cazar(id_fantasma):
+    return "BUST %s" % id_fantasma
+
+# funcion para soltar un fantasma
+def Soltar():
+    return "RELEASE"
 
 # loop
 while True:
