@@ -277,3 +277,9 @@ while True:
     for entity_id in sorted(cazadores[my_team_id].keys()):
         buster = cazadores[my_team_id][entity_id]
         print(str(buster.accion()))
+
+    # definir a los fantasmas atrapados como fuera de alcance
+    # para que no se repitan los cazadores en la misma direccion
+    for id_fantasma in sorted(fantasmas.keys()):
+        fantasma = fantasmas[id_fantasma]
+        fantasma.accion()
