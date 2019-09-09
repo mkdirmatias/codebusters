@@ -60,7 +60,8 @@ class Entity(Posicion):
         self.entity_id = entity_id
         self.tarea = Funcion(self)
         self.fuera_alcance = False
-movimiento        
+
+
     def actualizar(self, x, y):
         self.x = x
         self.y = y
