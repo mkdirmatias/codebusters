@@ -1,3 +1,4 @@
+![CodeBusters](https://static.codingame.com/servlet/fileservlet?id=5080426315156&format=puzzle_cover)
 # CODEBUSTERS
 **Tarea Evaluativa Nº 2** - Agentes Inteligentes
 
