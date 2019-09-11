@@ -47,11 +47,11 @@ def Mover(x,y, mensaje):
 
 # funcion para cazar un fantasma
 def Cazar(id_fantasma):
-    return "BUST %s Te caze puto" % id_fantasma
+    return "BUST %s Cazado" % id_fantasma
 
 # funcion para soltar un fantasma
 def Soltar():
-    return "RELEASE Dentrate"
+    return "RELEASE Atrapado"
 
 # clase que maneja los parametros básicos de cada jugador (cazador/fantasma)
 class Entity(Posicion):
@@ -61,12 +61,10 @@ class Entity(Posicion):
         self.tarea = Funcion(self)
         self.fuera_alcance = False
 
-
     def actualizar(self, x, y):
         self.x = x
         self.y = y
         self.fuera_alcance = False
-
         
     def accion(self):
         self.fuera_alcance = True
@@ -82,7 +80,6 @@ class Cazador(Entity):
         self.id_cazado = None
         cazadores[self.id_team][self.entity_id] = self
 
-        
     def actualizar(self, x, y, state, id_fantasma):
         Entity.actualizar(self, x, y)
         self.ocupado = state == 1
@@ -95,7 +92,6 @@ class Fantasma(Entity):
         self.num_cazadores = num_cazadores
         self.vida = state
         fantasmas[self.entity_id] = self
-
         
     def actualizar(self, x, y, num_cazadores):
         Entity.actualizar(self, x, y)
@@ -112,7 +108,6 @@ class Funcion:
             funcion_default = self
 
         self.funcion_default = funcion_default
-
 
     def accion(self):
         return Mover(8000,4500,'ALV')
@@ -133,7 +128,7 @@ class Explorador(Funcion):
             self.x, self.y = self.movimiento()
 
         # lo movemos a la siguiente posicion
-        return Mover(self.x, self.y,'Me voy ALV')
+        return Mover(self.x, self.y,'Explorando')
 
     # calcular un movimiento de forma aleatoria
     def movimiento(self):
@@ -167,7 +162,7 @@ class Capturador(Explorador):
                 return Soltar()
             else:
                 # de lo contrario nos movemos a la base
-                return Mover(base.x, base.y,'pa la base putito')
+                return Mover(base.x, base.y,'Prisionero')
 
         # variables de distancias
         distancia_minima = 16000*9000
@@ -209,7 +204,7 @@ class Capturador(Explorador):
         if fantasma_cerca == 0:
             return self.funcion_default.accion()
 
-        return Mover(fantasma_cerca.x, fantasma_cerca.y,'QVERGA')
+        return Mover(fantasma_cerca.x, fantasma_cerca.y,'No escaparas')
 
 
 # funcion para definir las tareas
@@ -256,6 +251,7 @@ def Jugadores(entity_id, x, y, entity_type, state, value):
             # si el cazador es de mi equipo, le asignamos una tarea
             if entity_type == my_team_id:
                 Tareas(cazador)
+
 
 # loop del juego
 while True:
