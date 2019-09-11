@@ -129,7 +129,7 @@ class Explorador(Funcion):
             self.x, self.y = self.movimiento()
 
         # lo movemos a la siguiente posicion
-        return Mover(self.x, self.y,'Explorando')
+        return Mover(self.x, self.y,'Explorar')
 
     # calcular un movimiento de forma aleatoria
     def movimiento(self):
