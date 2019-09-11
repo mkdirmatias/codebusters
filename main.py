@@ -24,7 +24,7 @@ fantasmas_atrapados = []
 cazadores = [{},{}]
 
 # tamaño de cuadrado a separar el mapa
-cuadrado = 1500
+cuadrado = 1700
 
 # clase que genera una posición (x,y)
 class Posicion:
