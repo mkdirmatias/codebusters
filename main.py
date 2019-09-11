@@ -42,16 +42,16 @@ def Distancia(posicion_uno, posicion_dos):
 bases = [Posicion(0,0),Posicion(16000,9000)]
 
 # función para mover al cazador
-def Mover(x,y):
-    return "MOVE %s %s" % (x,y)
+def Mover(x,y, mensaje):
+    return "MOVE %s %s %s" % (x,y,mensaje)
 
 # funcion para cazar un fantasma
 def Cazar(id_fantasma):
-    return "BUST %s" % id_fantasma
+    return "BUST %s Te caze puto" % id_fantasma
 
 # funcion para soltar un fantasma
 def Soltar():
-    return "RELEASE"
+    return "RELEASE Dentrate"
 
 # clase que maneja los parametros básicos de cada jugador (cazador/fantasma)
 class Entity(Posicion):
@@ -115,7 +115,7 @@ class Funcion:
 
 
     def accion(self):
-        return Mover(8000,4500)
+        return Mover(8000,4500,'ALV')
 
 
 # clase explorador
@@ -133,7 +133,7 @@ class Explorador(Funcion):
             self.x, self.y = self.movimiento()
 
         # lo movemos a la siguiente posicion
-        return Mover(self.x, self.y)
+        return Mover(self.x, self.y,'Me voy ALV')
 
     # calcular un movimiento de forma aleatoria
     def movimiento(self):
@@ -143,8 +143,8 @@ class Explorador(Funcion):
 
         for j in range(math.ceil(9000/cuadrado)):
             for i in range(math.ceil(16000/cuadrado)):
-                posicion = Posicion(min(15500,i*cuadrado+(cuadrado/2)),min(8500,j*cuadrado+(cuadrado/2)))
-                costo = 2100*random.randint(4500,16000)-Distancia(posicion,self.entity)
+                posicion = Posicion(min(16000,i*cuadrado+(cuadrado/2)),min(9000,j*cuadrado+(cuadrado/2)))
+                costo = 2100*random.randint(10000,16000)-Distancia(posicion,self.entity)
                 if distancia == None or distancia < costo:
                     distancia = costo
                     x = posicion.x
@@ -167,7 +167,7 @@ class Capturador(Explorador):
                 return Soltar()
             else:
                 # de lo contrario nos movemos a la base
-                return Mover(base.x, base.y)
+                return Mover(base.x, base.y,'pa la base putito')
 
         # variables de distancias
         distancia_minima = 16000*9000
@@ -209,7 +209,7 @@ class Capturador(Explorador):
         if fantasma_cerca == 0:
             return self.funcion_default.accion()
 
-        return Mover(fantasma_cerca.x, fantasma_cerca.y)
+        return Mover(fantasma_cerca.x, fantasma_cerca.y,'QVERGA')
 
 
 # funcion para definir las tareas
