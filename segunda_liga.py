@@ -47,7 +47,7 @@ def Mover(x,y, mensaje):
 
 # funcion para cazar un fantasma
 def Cazar(id_fantasma):
-    return "BUST %s Cazado" % id_fantasma
+    return "BUST %s Cazando" % id_fantasma
 
 # funcion para soltar un fantasma
 def Soltar():
@@ -55,7 +55,7 @@ def Soltar():
 
 # funcion para congelar
 def Stun(id_cazador):
-    return "STUN %s" % id_cazador
+    return "STUN %s Congelate" % id_cazador
 
 # clase que maneja los parametros básicos de cada jugador (cazador/fantasma)
 class Entity(Posicion):
