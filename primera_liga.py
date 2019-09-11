@@ -4,6 +4,7 @@ import sys
 import math
 import random
 
+
 # la cantidad de cazadores que controlas
 busters_per_player = int(input())
 
