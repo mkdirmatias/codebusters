@@ -144,7 +144,7 @@ class Explorador(Funcion):
         for j in range(math.ceil(9000/cuadrado)):
             for i in range(math.ceil(16000/cuadrado)):
                 posicion = Posicion(min(16000,i*cuadrado+(cuadrado/2)),min(9000,j*cuadrado+(cuadrado/2)))
-                costo = 2100*random.randint(10000,16000)-Distancia(posicion,self.entity)
+                costo = 2100*random.randint(4500,16000)-Distancia(posicion,self.entity)
                 if distancia == None or distancia < costo:
                     distancia = costo
                     x = posicion.x
